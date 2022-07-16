@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+
+const Home = React.lazy(() => import('./pages/Home'));
+const Todo = React.lazy(() => import('./pages/Todo'));
+
+const Loading = () => <div>loading</div>;
+const asyncElement = (element: React.ReactNode) => (
+  <Suspense fallback={<Loading />}>{element}</Suspense>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={asyncElement(<Home />)} />
+      <Route path="todo" element={asyncElement(<Todo />)} />
+    </Routes>
   );
 }
 
