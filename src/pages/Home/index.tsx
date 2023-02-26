@@ -11,6 +11,9 @@ function Home() {
       <li>
         <Link to="/form">Form</Link>
       </li>
+      <li>
+        <Link to="/workspace">Workspace</Link>
+      </li>
     </ul>
   );
 }
