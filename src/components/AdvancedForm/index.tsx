@@ -1,5 +1,14 @@
 import { useMemo } from 'react';
-import { Form, Input, Select, FormItemProps, Row, Col, ColProps } from 'antd';
+import {
+  Form,
+  Input,
+  Select,
+  Button,
+  FormItemProps,
+  Row,
+  Col,
+  ColProps,
+} from 'antd';
 
 type ILayoutType = 'grid';
 interface ILayoutItem<T> {
@@ -41,6 +50,8 @@ const FormItem = ({ type }: Partial<IFormItem>) => {
       return <Input />;
     case 'select':
       return <Select />;
+    case 'button':
+      return <Button />;
     default:
       break;
   }

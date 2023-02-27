@@ -44,6 +44,10 @@ function Home() {
       formItemProps,
       dependencies: ['region'],
     },
+    {
+      type: 'button',
+      value: '提交',
+    },
   ];
   return (
     <AdvancedForm
