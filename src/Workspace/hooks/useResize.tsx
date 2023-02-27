@@ -8,7 +8,7 @@ import React, {
 import throttle from 'lodash/throttle';
 import useMouseEvent from './useMouseEvent';
 import { safeRange } from '../utils/utils';
-import { ISize, IPosition, IPagePosition } from '../interface';
+import { ISize, IPosition, IPagePosition, IControls } from '../interface';
 import DrawingBoardContext from '../context';
 
 type IMouseInfo = {
@@ -19,15 +19,12 @@ type IMouseInfo = {
 
 /**
  * 宽高大小控制器
- * @param controlPosition 位置获取与更新
- * @param controlSize 大小获取与更新
- * @param drawingBoard 工作区画布大小
+ * @param controls 位置获取与更新
+ * @param { controlSize } 大小获取与更新
+ * @param { drawingBoard } 工作区画布大小
  * @returns 上下左右控制器按钮
  */
-const useResize = (
-  controlPosition: [IPosition, React.Dispatch<React.SetStateAction<IPosition>>],
-  controlSize: [ISize, React.Dispatch<React.SetStateAction<ISize>>],
-) => {
+const useResize = ({ controlPosition, controlSize }: IControls) => {
   const dotTopLeft = useRef<HTMLDivElement>(null);
   const dotTopMiddle = useRef<HTMLDivElement>(null);
   const dotTopRight = useRef<HTMLDivElement>(null);
@@ -41,7 +38,9 @@ const useResize = (
   const [position, setPosition] = controlPosition;
   const [size, setSize] = controlSize;
 
+  // 存储上一次（鼠标按下和松开期间）鼠标事件的状态
   const mouseInfo = useRef<IMouseInfo | null>(null);
+  // 因为事件监听内直接引入 state 在每次 state 更新后都要重新挂载新的函数，使用 ref 则不会
   const stateInfo = useRef({
     position,
     size,
@@ -152,12 +151,13 @@ const useResize = (
     mouseInfo.current = null;
   }, [onMouseMove, mouseInfo]);
 
-  // 将最新的 state 写到 ref，因为事件监听内直接引入 state 在每次 state 更新后都要重新挂载新的函数，使用 ref 则不会
+  // 将最新的 state 更新到 stateInfo ref
   useEffect(() => {
     stateInfo.current.position = position;
     stateInfo.current.size = size;
     stateInfo.current.drawingBoard = drawingBoard;
   }, [position, size, drawingBoard]);
+  // 注册事件
   useMouseEvent(onMouseDown, onMouseMove, onMouseUp);
 
   return (

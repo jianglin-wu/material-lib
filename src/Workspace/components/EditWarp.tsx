@@ -2,15 +2,7 @@ import { useState, useRef, cloneElement } from 'react';
 import useMove from '../hooks/useMove';
 import useResize from '../hooks/useResize';
 import { ISize, IPosition } from '../interface';
-
-const DEFAULT_SIZE: ISize = {
-  width: 100,
-  height: 100,
-};
-const DEFAULT_POSITION: IPosition = {
-  left: 0,
-  top: 0,
-};
+import { DEFAULT_SIZE, DEFAULT_POSITION } from '../constant';
 
 interface IProps {
   children: React.ReactElement;
@@ -22,25 +14,25 @@ const EditWarp = ({
   defaultSize = DEFAULT_SIZE,
   defaultPosition = DEFAULT_POSITION,
 }: IProps) => {
-  const controlSize = useState<ISize>(
-    defaultSize || { width: 100, height: 100 },
-  );
-  const controlPosition = useState<IPosition>(defaultPosition);
-
   const editContainer = useRef<HTMLDivElement | null>(null);
-  useMove({
-    editContainer,
+
+  const controlSize = useState<ISize>(defaultSize);
+  const controlPosition = useState<IPosition>(defaultPosition);
+  const controls = {
     controlSize,
     controlPosition,
-  });
-  const dotBoxes = useResize(controlPosition, controlSize);
+  };
+
+  useMove(editContainer, controls);
+  const dotBoxes = useResize(controls);
+
   const [position] = controlPosition;
   const [size] = controlSize;
-
   const childrenStyle = {
     width: size.width,
     height: size.height,
   };
+
   return (
     <div
       ref={editContainer}

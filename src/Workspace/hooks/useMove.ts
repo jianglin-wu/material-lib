@@ -2,23 +2,23 @@ import { useRef, useCallback, useEffect, useContext } from 'react';
 import throttle from 'lodash/throttle';
 import useMouseEvent from './useMouseEvent';
 import { isTargetInside, safeRange } from '../utils/utils';
-import { ISize, IPosition, IPagePosition } from '../interface';
+import { ISize, IPosition, IPagePosition, IControls } from '../interface';
 import DrawingBoardContext, {
   IDrawingBoardConfig,
   defaultDrawingBoardSize,
 } from '../context';
 
-interface IProps {
-  editContainer: React.MutableRefObject<HTMLDivElement | null>;
-  controlPosition: [IPosition, React.Dispatch<React.SetStateAction<IPosition>>];
-  controlSize: [ISize, React.Dispatch<React.SetStateAction<ISize>>];
-}
-const useMove = ({ editContainer, controlPosition, controlSize }: IProps) => {
+const useMove = (
+  editContainer: React.MutableRefObject<HTMLDivElement | null>,
+  { controlSize, controlPosition }: IControls,
+) => {
   const drawingBoard = useContext(DrawingBoardContext);
   const [position, setPosition] = controlPosition;
-  const [size, setSize] = controlSize;
+  const [size] = controlSize;
 
+  // 存储上一次（鼠标按下和松开期间）鼠标事件的状态
   const mouseInfo = useRef<(IPosition & IPagePosition) | null>(null);
+  // 因为事件监听内直接引入 state 在每次 state 更新后都要重新挂载新的函数，使用 ref 则不会
   const stateInfo = useRef<{
     size: ISize;
     position: IPosition;
@@ -75,15 +75,14 @@ const useMove = ({ editContainer, controlPosition, controlSize }: IProps) => {
     mouseInfo.current = null;
   }, [onMouseMove, mouseInfo]);
 
-  // 将最新的 state 写到 ref，因为事件监听内直接引入 state 在每次 state 更新后都要重新挂载新的函数，使用 ref 则不会
+  // 将最新的 state 更新到 stateInfo ref
   useEffect(() => {
     stateInfo.current.position = position;
     stateInfo.current.size = size;
     stateInfo.current.drawingBoard = drawingBoard;
   }, [position, size, drawingBoard]);
+  // 注册事件
   useMouseEvent(onMouseDown, onMouseMove, onMouseUp);
-
-  return [editContainer, [position, setPosition], [size, setSize]];
 };
 
 export default useMove;
