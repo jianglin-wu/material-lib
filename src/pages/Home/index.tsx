@@ -12,6 +12,9 @@ function Home() {
         <Link to="/form">Form</Link>
       </li>
       <li>
+        <Link to="/konva">KonvaEditor</Link>
+      </li>
+      <li>
         <Link to="/workspace">Workspace</Link>
       </li>
     </ul>

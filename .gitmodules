@@ -1,0 +1,6 @@
+[submodule "src/lib/react-konva-editor"]
+	path = src/lib/react-konva-editor
+	url = git@github.com:jianglin-wu/react-konva-editor.git
+[submodule "src/lib/react-konva-editor-kit"]
+	path = src/lib/react-konva-editor-kit
+	url = git@github.com:jianglin-wu/react-konva-editor-kit.git
