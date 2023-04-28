@@ -1,6 +1,7 @@
 import AdvancedForm from '../../components/AdvancedForm';
+import DataFieldFilterTest from '../../components/DataFieldFilter/test';
 
-function Home() {
+function FormPage() {
   const formItemProps = {
     labelCol: {
       span: 8,
@@ -50,18 +51,21 @@ function Home() {
     },
   ];
   return (
-    <AdvancedForm
-      formItems={[
-        {
-          type: 'grid',
-          colProps: {
-            span: 8,
+    <>
+      <AdvancedForm
+        formItems={[
+          {
+            type: 'grid',
+            colProps: {
+              span: 8,
+            },
+            children: fromItems,
           },
-          children: fromItems,
-        },
-      ]}
-    />
+        ]}
+      />
+      <DataFieldFilterTest />
+    </>
   );
 }
 
-export default Home;
+export default FormPage;

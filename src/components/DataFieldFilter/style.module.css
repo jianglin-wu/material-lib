@@ -1,0 +1,28 @@
+.currentFilter {
+  padding: 0 26px;
+  min-height: 56px;
+  background: rgba(11, 111, 214, 0.06);
+  border-radius: 4px 4px 0px 0px;
+  flex-wrap: wrap;
+  padding-bottom: 14px;
+}
+.label {
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 14px;
+}
+.tag {
+  height: 28px;
+  line-height: 20px;
+  margin-top: 14px;
+  /* margin: 14px 0; */
+  flex-shrink: 0;
+  padding: 4px 8px;
+  margin-right: 6px;
+  border: 1px solid #0b6fd6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
