@@ -4,7 +4,6 @@ import { Row, Col, Select } from 'antd';
 import FieldValue from './FieldValue';
 import { IDomainItem, IDomainValueRow, IOperatorMap } from './interfaces';
 
-const i: any = {};
 const { Option } = Select;
 
 export const findMetaItem = (metaData: IDomainItem[], field?: string) => {
@@ -77,7 +76,7 @@ const FieldRow: React.FC<IFieldRowProps> = ({
     <Row gutter={8} align="top" wrap={false}>
       <Col flex="160px">
         <Select
-          className={cn(i.w100p)}
+          className="w-full"
           notFoundContent="暂无数据"
           value={value?.field}
           onChange={(key) => {
@@ -93,7 +92,7 @@ const FieldRow: React.FC<IFieldRowProps> = ({
       </Col>
       <Col flex="96px">
         <Select
-          className={cn(i.w100p)}
+          className="w-full"
           notFoundContent="暂无数据"
           disabled={!operatorOptions || operatorOptions.length === 0}
           value={value?.operator}
@@ -136,13 +135,24 @@ const FieldRow: React.FC<IFieldRowProps> = ({
       <Col flex="66px">
         {canAdd && (
           <PlusCircleOutlined
-            className={cn(i.mr10, i.fs20, i.p2, i['secondary-color'], i.cp)}
+            className={cn(
+              'mr-2.5',
+              'text-lg',
+              'p-0.5',
+              'text-blue-500',
+              'cursor-pointer',
+            )}
             onClick={onAddRow}
           />
         )}
         {canRemove && (
           <DeleteOutlined
-            className={cn(i.fs20, i.p2, i['secondary-color'], i.cp)}
+            className={cn(
+              'text-lg',
+              'p-0.5',
+              'text-blue-500',
+              'cursor-pointer',
+            )}
             onClick={onRemoveRow}
           />
         )}

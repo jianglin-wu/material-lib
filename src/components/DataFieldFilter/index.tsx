@@ -10,8 +10,6 @@ import {
 } from './validator';
 import { IDomainItem, IOperatorMap } from './interfaces';
 
-const i: any = {};
-
 interface IDataFieldFilterAddProps {
   className: string;
   [key: string]: unknown;
@@ -78,7 +76,7 @@ export const DataFieldFilter: React.ForwardRefRenderFunction<
 
   return (
     <Form name="dynamic_form_item" form={form}>
-      <Row gutter={8} className={cn(i.mb5)}>
+      <Row gutter={8} className="mb-1.5">
         <Col flex="160px">数据类型</Col>
         <Col flex="96px">逻辑符</Col>
         <Col flex="auto">值</Col>

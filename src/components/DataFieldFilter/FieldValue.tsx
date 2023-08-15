@@ -1,8 +1,6 @@
-import cn from 'classnames';
 import { Input, Select, InputNumber } from 'antd';
 import { IDomainValue, IDomainValueRow } from './interfaces';
 
-const i: any = {};
 const { Option } = Select;
 
 interface IFieldValueProps {
@@ -38,7 +36,7 @@ const FieldValue: React.FC<IFieldValueProps> = ({
     case 'select':
       return (
         <Select
-          className={cn(i.w100p)}
+          className="w-full"
           notFoundContent="暂无数据"
           value={value}
           onChange={onChange}
@@ -55,7 +53,7 @@ const FieldValue: React.FC<IFieldValueProps> = ({
     case 'input':
       return (
         <Input
-          className={cn(i.w100p)}
+          className="w-full"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           {...metaData?.props}
@@ -64,7 +62,7 @@ const FieldValue: React.FC<IFieldValueProps> = ({
     case 'number':
       return (
         <InputNumber
-          className={cn(i.w100p)}
+          className="!w-full"
           value={value}
           onChange={onChange}
           {...metaData?.props}
@@ -74,7 +72,7 @@ const FieldValue: React.FC<IFieldValueProps> = ({
       break;
   }
 
-  return <Input className={cn(i.w100p)} disabled />;
+  return <Input className="w-full" disabled />;
 };
 
 export default FieldValue;

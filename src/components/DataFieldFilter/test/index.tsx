@@ -1,11 +1,8 @@
 import { useRef, useState } from 'react';
-import cn from 'classnames';
 import DataFieldFilterWithModal from '..';
 import DataFieldFilterCurrent from '../DataFieldFilterCurrent';
 import { operatorMap, metaData as dataFilterMetaData } from './data-filter';
 import { IModalOuterRef } from '../../ModalContainer';
-
-const i: any = {};
 
 const Test = () => {
   const [data, setData] = useState([]);
@@ -24,7 +21,7 @@ const Test = () => {
         }}
         metaData={dataFilterMetaData}
         triggerProps={{
-          className: cn(i.ml12),
+          className: 'ml-3',
         }}
         initialValue={data}
         onSubmit={(payload: any) => {

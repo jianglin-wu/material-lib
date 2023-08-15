@@ -9,10 +9,6 @@ import {
   IOptionalPair,
 } from './interfaces';
 
-// TODO:css
-const i: any = {};
-const s: any = {};
-
 // 作用：
 // [{ key: a, label: b }] -> { a: b }
 const keyLabel2Map: (
@@ -45,8 +41,10 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
   onEdit,
 }) => {
   return (
-    <div className={cn(i.df, i.mt12, s.currentFilter, className)}>
-      <span className={cn(i['pri-cor-ipt'], s.label)}>当前筛选：</span>
+    <div className={cn('flex mt-3 px-6 flex-wrap', className)}>
+      <span className={cn('text-blue-500 flex-grow-0 flex-shrink-0 text-sm')}>
+        当前筛选：
+      </span>
       {data?.map(({ field, operator, value }, index) => {
         const left = findMetaItem(metaData, field)?.name || field;
         // 统一值类型为数组
@@ -73,8 +71,14 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
             : operator;
 
         return (
-          <span key={field} className={cn(i['main-color'], s.tag)}>
-            <span className={cn(i.cp)} onClick={() => onEdit?.(index, field)}>
+          <span
+            key={field}
+            className="text-blue-500 text-sm flex-shrink-0 py-2 px-1 mr-1.5 rounded border border-blue-500 border-solid flex items-center"
+          >
+            <span
+              className="cursor-pointer"
+              onClick={() => onEdit?.(index, field)}
+            >
               {left} {operatorText} {valueArr.join(',')}
             </span>
             <CloseIcon onClick={() => onRemove?.(index, field)} />

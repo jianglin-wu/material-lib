@@ -1,14 +1,9 @@
-import cn from 'classnames';
-
-const i: any = {};
-
 export function CloseIcon(props: any) {
   return (
     <svg
-      className={cn(i.vam, i.ml5, i.p2, i.cp)}
+      className="align-middle ml-3 p-0.5 cursor-pointer inline"
       width="16px"
       height="16px"
-      t="1678160860597"
       viewBox="0 0 1024 1024"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
