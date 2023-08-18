@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cls from 'classnames';
 import { PlusCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Row, Col, Select } from 'antd';
 import FieldValue from './FieldValue';
@@ -135,7 +135,7 @@ const FieldRow: React.FC<IFieldRowProps> = ({
       <Col flex="66px">
         {canAdd && (
           <PlusCircleOutlined
-            className={cn(
+            className={cls(
               'mr-2.5',
               'text-lg',
               'p-0.5',
@@ -147,7 +147,7 @@ const FieldRow: React.FC<IFieldRowProps> = ({
         )}
         {canRemove && (
           <DeleteOutlined
-            className={cn(
+            className={cls(
               'text-lg',
               'p-0.5',
               'text-blue-500',

@@ -1,5 +1,5 @@
 import AdvancedForm from '../../components/AdvancedForm';
-import DataFieldFilterTest from '../../components/DataFieldFilter/test';
+import DataFieldFilterTest from '../../components/DataFieldFilter/example';
 
 function FormPage() {
   const formItemProps = {

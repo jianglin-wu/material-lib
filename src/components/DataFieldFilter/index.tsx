@@ -1,5 +1,5 @@
 import { useState, useImperativeHandle } from 'react';
-import cn from 'classnames';
+import cls from 'classnames';
 import { Row, Col, Form, Button } from 'antd';
 import { componentWithModal, IModalInnerRef } from '../ModalContainer';
 import FieldRow from './FieldRow';
@@ -18,7 +18,7 @@ export const DataFieldFilterAdd: React.FC<IDataFieldFilterAddProps> = ({
   className,
   ...props
 }) => (
-  <Button type="primary" className={cn(className)} {...props}>
+  <Button type="primary" className={cls(className)} {...props}>
     添加筛选器
   </Button>
 );

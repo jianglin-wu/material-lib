@@ -1,5 +1,5 @@
-import cn from 'classnames';
-import { CloseIcon } from './common';
+import cls from 'classnames';
+import { CloseIcon } from '../Icon/CloseOutline';
 import { findMetaItem, getValueLeafOptions } from './FieldRow';
 import {
   IDomainItem,
@@ -32,7 +32,7 @@ interface IDataFieldFilterCurrent {
   onRemove: (index: number, field: string) => void;
   onEdit: (index: number, field: string) => void;
 }
-const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
+const CurrentSelect: React.FC<IDataFieldFilterCurrent> = ({
   className,
   metaData,
   operatorMap,
@@ -41,8 +41,13 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
   onEdit,
 }) => {
   return (
-    <div className={cn('flex mt-3 px-6 flex-wrap', className)}>
-      <span className={cn('text-blue-500 flex-grow-0 flex-shrink-0 text-sm')}>
+    <div
+      className={cls(
+        'flex mt-3 px-3 flex-wrap space-x-2 space-x-reverse',
+        className,
+      )}
+    >
+      <span className="flex-grow-0 flex-shrink-0 text-base text-slate-600 leading-10 mr-0">
         当前筛选：
       </span>
       {data?.map(({ field, operator, value }, index) => {
@@ -73,7 +78,7 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
         return (
           <span
             key={field}
-            className="text-blue-500 text-sm flex-shrink-0 py-2 px-1 mr-1.5 rounded border border-blue-500 border-solid flex items-center"
+            className="text-blue-500 text-sm flex-shrink-0 py-2 px-2 rounded border border-blue-500 border-solid flex items-center last:!mr-0"
           >
             <span
               className="cursor-pointer"
@@ -81,7 +86,11 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
             >
               {left} {operatorText} {valueArr.join(',')}
             </span>
-            <CloseIcon onClick={() => onRemove?.(index, field)} />
+            <CloseIcon
+              className="w-4 h-4 box-content cursor-pointer stroke-slate-500 hover:stroke-blue-500 p-1"
+              strokeWidth={2}
+              onClick={() => onRemove?.(index, field)}
+            />
           </span>
         );
       })}
@@ -89,4 +98,4 @@ const DataFieldFilterCurrent: React.FC<IDataFieldFilterCurrent> = ({
   );
 };
 
-export default DataFieldFilterCurrent;
+export default CurrentSelect;

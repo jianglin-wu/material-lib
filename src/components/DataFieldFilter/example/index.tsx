@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import DataFieldFilterWithModal from '..';
-import DataFieldFilterCurrent from '../DataFieldFilterCurrent';
+import CurrentSelect from '../CurrentSelect';
 import { operatorMap, metaData as dataFilterMetaData } from './data-filter';
 import { IModalOuterRef } from '../../ModalContainer';
 
@@ -30,7 +30,7 @@ const Test = () => {
         }}
       />
 
-      <DataFieldFilterCurrent
+      <CurrentSelect
         metaData={dataFilterMetaData}
         operatorMap={operatorMap}
         data={data}
