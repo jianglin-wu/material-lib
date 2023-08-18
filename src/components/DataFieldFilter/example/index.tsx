@@ -20,9 +20,7 @@ const Test = () => {
           return valueOfValue;
         }}
         metaData={dataFilterMetaData}
-        triggerProps={{
-          className: 'ml-3',
-        }}
+        triggerProps={{}}
         initialValue={data}
         onSubmit={(payload: any) => {
           console.log('payload:', payload);
@@ -31,6 +29,7 @@ const Test = () => {
       />
 
       <CurrentSelect
+        className="mt-3"
         metaData={dataFilterMetaData}
         operatorMap={operatorMap}
         data={data}

@@ -4,8 +4,8 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500 py-48">
-      <div className="backdrop-blur-sm bg-white/20 w-[600px] mx-auto rounded-[20px] shadow-xl p-4 space-y-2">
+    <div className="w-full min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500 py-20 md:py-48">
+      <div className="backdrop-blur-sm bg-white/20 w-auto mx-6 md:w-[600px] md:mx-auto rounded-[20px] shadow-xl p-4 space-y-2">
         <Disclosure defaultOpen>
           {({ open }) => (
             <div>
@@ -49,13 +49,24 @@ function Home() {
               </div>
               <div className="mx-auto w-full p-2">
                 <Disclosure.Panel className="text-white">
-                  This is advance form, use to search filter,{' '}
-                  <Link
-                    to="/form"
-                    className="text-cyan-200 hover:text-cyan-100 hover:underline"
-                  >
-                    to Form page.
-                  </Link>
+                  <div>
+                    This is advance form, use to search filter,{' '}
+                    <Link
+                      to="/form/list-filter-head"
+                      className="text-cyan-200 hover:text-cyan-100 hover:underline"
+                    >
+                      to Form page.
+                    </Link>
+                  </div>
+                  <div>
+                    This is advance form, use to search filter,{' '}
+                    <Link
+                      to="/form/dynamic-filter"
+                      className="text-cyan-200 hover:text-cyan-100 hover:underline"
+                    >
+                      to Form Dynamic Filter page.
+                    </Link>
+                  </div>
                 </Disclosure.Panel>
               </div>
             </div>

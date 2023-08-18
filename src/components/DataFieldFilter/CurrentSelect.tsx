@@ -41,12 +41,7 @@ const CurrentSelect: React.FC<IDataFieldFilterCurrent> = ({
   onEdit,
 }) => {
   return (
-    <div
-      className={cls(
-        'flex mt-3 px-3 flex-wrap space-x-2 space-x-reverse',
-        className,
-      )}
-    >
+    <div className={cls('flex flex-wrap space-x-2 space-x-reverse', className)}>
       <span className="flex-grow-0 flex-shrink-0 text-base text-slate-600 leading-10 mr-0">
         当前筛选：
       </span>

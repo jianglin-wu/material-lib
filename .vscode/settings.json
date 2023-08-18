@@ -1,5 +1,6 @@
 {
   "files.associations": {
     "*.tailwind.css": "tailwindcss"
-  }
+  },
+  "cSpell.words": ["headlessui", "heroicons"]
 }

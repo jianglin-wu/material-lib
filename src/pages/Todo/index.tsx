@@ -1,9 +1,12 @@
 import { useRecoilState } from 'recoil';
 import { useSearchParams } from 'react-router-dom';
 import { ITaskState } from '../../components/Todo/interface';
+import Header from '../../components/Header';
 import TaskList from '../../components/Todo/TaskList';
 import './learnstorybook-code.css';
 import tasksAtom from './atom';
+
+const items = [{ path: '/', name: 'Home' }];
 
 export interface IPureProps {
   error: string | null;
@@ -51,7 +54,8 @@ export function PureInboxScreen({ error }: IPureProps) {
   }
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <div>
+      <Header items={items} />
       <div className="page lists-show" style={{ margin: '20px 50px' }}>
         <nav>
           <h1 className="title-page">

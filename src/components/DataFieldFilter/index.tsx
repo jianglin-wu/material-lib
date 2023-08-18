@@ -11,7 +11,7 @@ import {
 import { IDomainItem, IOperatorMap } from './interfaces';
 
 interface IDataFieldFilterAddProps {
-  className: string;
+  className?: string;
   [key: string]: unknown;
 }
 export const DataFieldFilterAdd: React.FC<IDataFieldFilterAddProps> = ({
