@@ -1,4 +1,4 @@
-import '../src/index.css';
+import '../src/index.tailwind.css';
 import '../src/pages/Todo/learnstorybook-code.css';
 
 export const parameters = {

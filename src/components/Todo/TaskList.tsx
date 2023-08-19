@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckIcon from '@heroicons/react/24/outline/CheckIcon';
 import Task from './Task';
 import { ITask, ITaskState } from './interface';
 
@@ -21,16 +22,24 @@ export const PureTaskList: React.FC<IProps> = ({
   };
 
   const LoadingRow = (
-    <div className="loading-item">
-      <span className="glow-checkbox" />
-      <span className="glow-text">
-        <span>Loading</span> <span>cool</span> <span>state</span>
+    <div className="loading-item peer peer:border-t peer:border-t-[#f0f9fb] h-12 w-full bg-white flex items-center leading-4 pl-4">
+      <span className=" w-3 h-3 mr-4 bg-[#eee] text-transparent cursor-progress inline-block animate-pulse" />
+      <span className="">
+        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+          Loading
+        </span>{' '}
+        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+          cool
+        </span>{' '}
+        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+          state
+        </span>
       </span>
     </div>
   );
   if (loading) {
     return (
-      <div className="list-items">
+      <div className="relative bg-white min-h-[288px]">
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}
@@ -43,12 +52,10 @@ export const PureTaskList: React.FC<IProps> = ({
 
   if (tasks.length === 0) {
     return (
-      <div className="list-items">
-        <div className="wrapper-message">
-          <span className="icon-check" />
-          <div className="title-message">You have no tasks</div>
-          <div className="subtitle-message">Sit back and relax</div>
-        </div>
+      <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
+        <CheckIcon className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
+        <div className="text-base font-extrabold text-slate-900">Oh no!</div>
+        <div className="text-sm text-slate-600">Something went wrong</div>
       </div>
     );
   }
@@ -59,7 +66,7 @@ export const PureTaskList: React.FC<IProps> = ({
     ...tasks.filter((t) => t.state === ITaskState.TASK_ARCHIVED),
   ];
   return (
-    <div className="list-items">
+    <div className="relative bg-white min-h-[288px]">
       {tasksInOrder.map((task) => (
         <Task key={task.id} task={task} {...events} />
       ))}

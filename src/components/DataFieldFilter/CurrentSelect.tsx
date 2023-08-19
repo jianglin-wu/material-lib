@@ -1,5 +1,5 @@
 import cls from 'classnames';
-import { CloseIcon } from '../Icon/CloseOutline';
+import CloseIcon from '../Icon/CloseOutline';
 import { findMetaItem, getValueLeafOptions } from './FieldRow';
 import {
   IDomainItem,

@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import TaskList from '../../components/Todo/TaskList';
 import './learnstorybook-code.css';
 import tasksAtom from './atom';
+import FaceFrownOutline from '../../components/Icon/FaceFrownOutline';
 
 const items = [{ path: '/', name: 'Home' }];
 
@@ -43,12 +44,10 @@ export function PureInboxScreen({ error }: IPureProps) {
 
   if (error) {
     return (
-      <div className="page lists-show">
-        <div className="wrapper-message">
-          <span className="icon-face-sad" />
-          <div className="title-message">Oh no!</div>
-          <div className="subtitle-message">Something went wrong</div>
-        </div>
+      <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
+        <FaceFrownOutline className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
+        <div className="text-base font-extrabold text-slate-100">Oh no!</div>
+        <div className="text-sm text-slate-200">Something went wrong</div>
       </div>
     );
   }
@@ -56,10 +55,12 @@ export function PureInboxScreen({ error }: IPureProps) {
   return (
     <div>
       <Header items={items} />
-      <div className="page lists-show" style={{ margin: '20px 50px' }}>
-        <nav>
-          <h1 className="title-page">
-            <span className="title-wrapper">TaskBox</span>
+      <div className="min-h-[80vh] bg-white" style={{ margin: '20px 50px' }}>
+        <nav className="text-left md:text-center px-6 py-5 bg-[#d3edf4]">
+          <h1 className="text-xl leading-5 cursor-pointer whitespace-nowrap">
+            <span className="overflow-hidden text-ellipsis whitespace-nowrap font-extrabold text-[#1c3f53] inline-block align-top max-w-full">
+              TaskBox
+            </span>
           </h1>
         </nav>
         <TaskList

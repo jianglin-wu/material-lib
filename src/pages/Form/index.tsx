@@ -8,7 +8,6 @@ const items = [
 ];
 
 const Index = (props: any) => {
-  console.log('props', props);
   return (
     <div className="min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500">
       <Header items={items} />
