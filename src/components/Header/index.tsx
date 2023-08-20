@@ -5,7 +5,11 @@ import { Fragment } from 'react';
 
 type IItems = Array<{ name: string; path: string }>;
 
-const Nav = ({ items }: { items: IItems }) => {
+export interface IProps {
+  items: IItems;
+}
+
+const Nav = ({ items }: IProps) => {
   return (
     <>
       {items.map((item) => (

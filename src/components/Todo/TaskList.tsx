@@ -22,8 +22,8 @@ export const PureTaskList: React.FC<IProps> = ({
   };
 
   const LoadingRow = (
-    <div className="loading-item peer peer:border-t peer:border-t-[#f0f9fb] h-12 w-full bg-white flex items-center leading-4 pl-4">
-      <span className=" w-3 h-3 mr-4 bg-[#eee] text-transparent cursor-progress inline-block animate-pulse" />
+    <div className="[&+&]:border-t [&+&]:border-[#f0f9fb] h-12 w-full bg-white flex items-center leading-4 pl-4">
+      <span className="w-3 h-3 mr-4 bg-[#eee] text-transparent cursor-progress inline-block animate-pulse" />
       <span className="">
         <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
           Loading
@@ -52,10 +52,12 @@ export const PureTaskList: React.FC<IProps> = ({
 
   if (tasks.length === 0) {
     return (
-      <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
-        <CheckIcon className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
-        <div className="text-base font-extrabold text-slate-900">Oh no!</div>
-        <div className="text-sm text-slate-600">Something went wrong</div>
+      <div className="relative bg-white min-h-[288px]">
+        <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
+          <CheckIcon className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
+          <div className="text-base font-extrabold text-slate-900">Oh no!</div>
+          <div className="text-sm text-slate-600">Something went wrong</div>
+        </div>
       </div>
     );
   }

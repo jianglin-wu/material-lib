@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom/client';
-import { IProps } from './TaskList';
+import TaskList, { IProps } from './TaskList';
 import { WithPinnedTasks } from './TaskList.stories';
 
 it('renders pinned tasks at the start of the list', () => {
   const div = document.createElement('div');
   const root = ReactDOM.createRoot(div);
-  root.render(<WithPinnedTasks {...(WithPinnedTasks.args as IProps)} />);
+  root.render(<TaskList {...(WithPinnedTasks.args as IProps)} />);
   const lastTaskInput = div.querySelector(
     '.list2-item:nth-child(1) input[value="Task 4"]',
   );

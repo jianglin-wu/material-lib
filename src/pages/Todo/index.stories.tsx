@@ -1,25 +1,35 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { RecoilRoot } from 'recoil';
-import { IPureProps, PureInboxScreen } from './index';
+import { BrowserRouter } from 'react-router-dom';
+import { PureInboxScreen } from './index';
 
-export default {
+const meta: Meta<typeof PureInboxScreen> = {
   title: 'TODO/InboxScreen',
   component: PureInboxScreen,
-  decorators: [(story) => <RecoilRoot>{story()}</RecoilRoot>],
-} as ComponentMeta<typeof PureInboxScreen>;
-
-const Template = (args: IPureProps) => <PureInboxScreen {...args} />;
-
-export const Default: ComponentStory<typeof PureInboxScreen> = Template.bind(
-  {},
-);
-Default.args = {
-  error: null,
+  decorators: [
+    (story) => (
+      <RecoilRoot>
+        <BrowserRouter>{story()}</BrowserRouter>
+      </RecoilRoot>
+    ),
+  ],
+  parameters: {
+    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
+    layout: 'fullscreen',
+  },
 };
 
-export const ErrorState: ComponentStory<typeof PureInboxScreen> = Template.bind(
-  {},
-);
-ErrorState.args = {
-  error: '加载失败！',
+export default meta;
+
+type Story = StoryObj<typeof PureInboxScreen>;
+export const Default: Story = {
+  args: {
+    error: null,
+  },
+};
+
+export const ErrorState: Story = {
+  args: {
+    error: '加载失败！',
+  },
 };

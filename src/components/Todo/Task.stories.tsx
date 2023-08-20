@@ -1,35 +1,40 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Task, { IProps } from './Task';
 import { ITaskState } from './interface';
 
-export default {
+const meta: Meta<typeof Task> = {
   title: 'TODO/Task',
   component: Task,
-} as ComponentMeta<typeof Task>;
+};
 
-const Template = (args: IProps) => <Task {...args} />;
+export default meta;
 
-export const Default: ComponentStory<typeof Task> = Template.bind({});
-Default.args = {
-  task: {
-    id: 1,
-    title: 'Test Task',
-    state: ITaskState.TASK_INBOX,
+type Story = StoryObj<typeof Task>;
+
+export const Default: Story = {
+  args: {
+    task: {
+      id: 1,
+      title: 'Test Task',
+      state: ITaskState.TASK_INBOX,
+    },
   },
 };
 
-export const Pinned: ComponentStory<typeof Task> = Template.bind({});
-Pinned.args = {
-  task: {
-    ...(Default.args as IProps).task,
-    state: ITaskState.TASK_PINNED,
+export const Pinned: Story = {
+  args: {
+    task: {
+      ...(Default.args as IProps).task,
+      state: ITaskState.TASK_PINNED,
+    },
   },
 };
 
-export const Archived: ComponentStory<typeof Task> = Template.bind({});
-Archived.args = {
-  task: {
-    ...(Default.args as IProps).task,
-    state: ITaskState.TASK_ARCHIVED,
+export const Archived: Story = {
+  args: {
+    task: {
+      ...(Default.args as IProps).task,
+      state: ITaskState.TASK_ARCHIVED,
+    },
   },
 };
