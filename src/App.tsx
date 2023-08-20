@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import 'antd/dist/antd.css';
 import LoadingPage, { LoadingBlock } from './components/Loading';
 import BasicLayout from './components/Layout/BasicLayout';
 
