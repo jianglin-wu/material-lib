@@ -1,24 +1,42 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import LoadingPage, { LoadingBlock } from './components/Loading';
+import BasicLayout from './components/Layout/BasicLayout';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Todo = React.lazy(() => import('./pages/Todo'));
-const Form = React.lazy(() => import('./pages/Form'));
+const FormIndex = React.lazy(() => import('./pages/Form/index'));
+const ListFilterHead = React.lazy(() => import('./pages/Form/ListFilterHead'));
+const DynamicFilter = React.lazy(() => import('./pages/Form/DynamicFilter'));
 const Workspace = React.lazy(() => import('./Workspace'));
 
-const Loading = () => <div>loading</div>;
-const asyncElement = (element: React.ReactNode) => (
-  <Suspense fallback={<Loading />}>{element}</Suspense>
-);
+const asyncElement = (
+  element: React.ReactNode,
+  fallback: React.ReactNode = <LoadingBlock />,
+) => <Suspense fallback={fallback}>{element}</Suspense>;
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={asyncElement(<Home />)} />
-      <Route path="/todo" element={asyncElement(<Todo />)} />
-      <Route path="/form" element={asyncElement(<Form />)} />
-      <Route path="/workspace" element={asyncElement(<Workspace />)} />
+      <Route element={<BasicLayout />}>
+        <Route path="/" element={asyncElement(<Home />, <LoadingPage />)} />
+        <Route path="/todo" element={asyncElement(<Todo />, <LoadingPage />)} />
+        <Route
+          path="/form"
+          element={asyncElement(<FormIndex />, <LoadingPage />)}
+        >
+          <Route
+            path="list-filter-head"
+            element={asyncElement(<ListFilterHead />)}
+          />
+          <Route
+            path="dynamic-filter"
+            element={asyncElement(<DynamicFilter />)}
+          />
+        </Route>
+        <Route path="/workspace" element={asyncElement(<Workspace />)} />
+      </Route>
     </Routes>
   );
 }

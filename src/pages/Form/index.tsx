@@ -1,67 +1,21 @@
-import AdvancedForm from '../../components/AdvancedForm';
+import { Outlet } from 'react-router-dom';
+import Header from '../../components/Header';
 
-function Home() {
-  const formItemProps = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-  const fromItems = [
-    {
-      label: '国家',
-      field: 'country',
-      type: 'select',
-      formItemProps,
-    },
-    {
-      label: '省份',
-      field: 'province',
-      type: 'select',
-      formItemProps,
-      dependencies: ['country'],
-    },
-    {
-      label: '城市',
-      field: 'city',
-      type: 'select',
-      formItemProps,
-      dependencies: ['province'],
-    },
-    {
-      label: '区县',
-      field: 'region',
-      type: 'select',
-      formItemProps,
-      dependencies: ['city'],
-    },
-    {
-      label: '街道',
-      field: 'street',
-      type: 'select',
-      formItemProps,
-      dependencies: ['region'],
-    },
-    {
-      type: 'button',
-      value: '提交',
-    },
-  ];
+const items = [
+  { path: '/', name: 'Home' },
+  { path: '/form/list-filter-head', name: 'Form List Filter Head' },
+  { path: '/form/dynamic-filter', name: 'Form Dynamic Filter' },
+];
+
+const Index = (props: any) => {
   return (
-    <AdvancedForm
-      formItems={[
-        {
-          type: 'grid',
-          colProps: {
-            span: 8,
-          },
-          children: fromItems,
-        },
-      ]}
-    />
+    <div className="min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500">
+      <Header items={items} />
+      <div className="rounded min-h-[500px] bg-white m-6 p-6">
+        <Outlet />
+      </div>
+    </div>
   );
-}
+};
 
-export default Home;
+export default Index;
