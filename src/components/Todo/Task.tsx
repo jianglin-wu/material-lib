@@ -1,5 +1,5 @@
-import CheckIcon from '@heroicons/react/24/outline/CheckIcon';
-import StarIcon from '@heroicons/react/24/outline/StarIcon';
+import { CheckIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/outline';
 import { ITask, ITaskState } from './interface';
 
 export interface IProps {

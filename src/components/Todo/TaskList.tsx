@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckIcon from '@heroicons/react/24/outline/CheckIcon';
+import { CheckIcon } from '@heroicons/react/24/outline';
 import Task from './Task';
 import { ITask, ITaskState } from './interface';
 
