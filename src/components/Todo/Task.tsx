@@ -15,25 +15,25 @@ export default function Task({
 }: IProps) {
   return (
     <div
-      className={`${state} group/item flex leading-5 flex-wrap h-12 w-full bg-white hover:bg-gradient-to-t from-[#e5f9f7] to-[#f0fffd] [&+&]:border-t [&+&]:border-[#f0f9fb]`}
+      className={`${state} group/item flex h-12 w-full flex-wrap bg-white from-[#e5f9f7] to-[#f0fffd] leading-5 hover:bg-gradient-to-t [&+&]:border-t [&+&]:border-[#f0f9fb]`}
     >
-      <label className="relative h-12 flex items-center justify-center align-middle w-11 group-hover/item:cursor-pointer">
+      <label className="group-hover/item:cursor-pointer relative flex h-12 w-11 items-center justify-center align-middle">
         <input
           type="checkbox"
           checked={state === ITaskState.TASK_ARCHIVED}
           disabled
           name="checked"
-          className="invisible peer"
+          className="peer invisible"
         />
         <span
-          className="block peer-checked:hidden absolute top-1/2 right-auto bottom-auto left-1/2 w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 bg-transparent shadow-[0_0_0_1px_#2cc5d2_inset]"
+          className="absolute top-1/2 right-auto bottom-auto left-1/2 block h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 bg-transparent shadow-[0_0_0_1px_#2cc5d2_inset] peer-checked:hidden"
           onClick={() => onArchiveTask(id)}
         />
-        <CheckIcon className="hidden peer-checked:block absolute top-1/2 right-auto bottom-auto left-1/2 w-5 h-5 -translate-x-1/2 -translate-y-1/2 stroke-[#2cc5d2]" />
+        <CheckIcon className="absolute top-1/2 right-auto bottom-auto left-1/2 hidden h-5 w-5 -translate-x-1/2 -translate-y-1/2 stroke-[#2cc5d2] peer-checked:block" />
       </label>
-      <div className="overflow-hidden text-ellipsis whitespace-nowrap flex-grow">
+      <div className="flex-grow overflow-hidden text-ellipsis whitespace-nowrap">
         <input
-          className="text-slate-500 [.TASK\_ARCHIVED_&]:text-[#aaa] leading-[48px] outline-none bg-transparent w-full focus:cursor-text"
+          className="w-full bg-transparent leading-[48px] text-slate-500 outline-none focus:cursor-text [.TASK\_ARCHIVED_&]:text-[#aaa]"
           type="text"
           value={title}
           readOnly={true}
@@ -47,7 +47,7 @@ export default function Task({
       >
         {state !== ITaskState.TASK_ARCHIVED && (
           <a className="flex h-12 items-center" onClick={() => onPinTask(id)}>
-            <StarIcon className="w-4 h-4 stroke-[#2cc5d2] [.TASK\_PINNED_&]:fill-[#2cc5d2] cursor-pointer" />
+            <StarIcon className="h-4 w-4 cursor-pointer stroke-[#2cc5d2] [.TASK\_PINNED_&]:fill-[#2cc5d2]" />
           </a>
         )}
       </div>

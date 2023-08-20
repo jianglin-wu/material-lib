@@ -13,7 +13,7 @@ const items = [
 
 export default function Workspace() {
   return (
-    <div className="bg-gradient-to-tr from-sky-500 to-purple-500 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500">
       <Header items={items} />
       <DrawingBoard className="work-area mx-6">
         <EditWarp defaultPosition={{ left: 0, top: 0 }}>

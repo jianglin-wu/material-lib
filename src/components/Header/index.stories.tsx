@@ -5,7 +5,19 @@ import Header from './index';
 const meta: Meta<typeof Header> = {
   title: 'Basic/Header',
   component: Header,
-  decorators: [(story) => <BrowserRouter>{story()}</BrowserRouter>],
+  decorators: [
+    (story) => (
+      <BrowserRouter>
+        <div className="min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500">
+          {story()}
+        </div>
+      </BrowserRouter>
+    ),
+  ],
+  parameters: {
+    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
+    layout: 'fullscreen',
+  },
 };
 
 export default meta;

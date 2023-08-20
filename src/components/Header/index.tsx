@@ -15,7 +15,7 @@ const Nav = ({ items }: IProps) => {
       {items.map((item) => (
         <Link
           key={item.path}
-          className="block md:inline-block bg-slate-500/20 py-1 px-2 rounded text-cyan-200 hover:text-cyan-300 hover:underline"
+          className="block rounded-lg bg-slate-900/10 py-2 px-4 text-white hover:bg-slate-900/20 hover:text-white font-bold text-center transform-all duration-100 active:bg-slate-500/50 md:inline-block"
           to={item.path}
         >
           {item.name}
@@ -30,8 +30,8 @@ const MobilePopover = ({ children }: { children: React.ReactNode }) => {
     <Popover className="relative">
       {({ open }) => (
         <>
-          <Popover.Button className="md:hidden w-6 h-6 my-1 mr-6 float-right outline-none bg-slate-500/20 active:bg-slate-500/30 rounded">
-            <Bars3Icon className="w-6 h-6 stroke-slate-300" />
+          <Popover.Button className={`float-right my-1 mr-6 h-8 w-8 rounded ${open ? 'bg-slate-900/20' : 'bg-slate-900/10'} p-1 outline-none active:bg-slate-500/30 md:hidden`}>
+            <Bars3Icon className="h-6 w-6 stroke-white" />
           </Popover.Button>
           <Transition
             as={Fragment}
@@ -42,7 +42,7 @@ const MobilePopover = ({ children }: { children: React.ReactNode }) => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute right-6 z-10 mt-12 w-60 max-w-sm transform shadow-lg sm:px-0 lg:max-w-3xl bg-white/100 backdrop-blur rounded-lg p-4 space-y-2">
+            <Popover.Panel className="absolute right-6 z-10 mt-14 w-60 max-w-sm transform space-y-2 rounded-2xl bg-slate-900/20 p-2 shadow-lg backdrop-blur-lg md:px-0 lg:max-w-3xl">
               {children}
             </Popover.Panel>
           </Transition>
@@ -54,11 +54,11 @@ const MobilePopover = ({ children }: { children: React.ReactNode }) => {
 
 const Header = ({ items }: { items: IItems }) => {
   return (
-    <div className="w-full relative z-10 backdrop-blur bg-white/20 after:block after:clear-both py-2">
+    <div className="relative z-10 w-full bg-white/20 py-2 backdrop-blur after:clear-both after:block">
       <MobilePopover>
         <Nav items={items} />
       </MobilePopover>
-      <div className="hidden md:flex float-right space-x-2 mr-4">
+      <div className="float-right mr-4 hidden space-x-2 md:flex">
         <Nav items={items} />
       </div>
     </div>

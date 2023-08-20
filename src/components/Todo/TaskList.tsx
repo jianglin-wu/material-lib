@@ -22,16 +22,16 @@ export const PureTaskList: React.FC<IProps> = ({
   };
 
   const LoadingRow = (
-    <div className="[&+&]:border-t [&+&]:border-[#f0f9fb] h-12 w-full bg-white flex items-center leading-4 pl-4">
-      <span className="w-3 h-3 mr-4 bg-[#eee] text-transparent cursor-progress inline-block animate-pulse" />
+    <div className="flex h-12 w-full items-center bg-white pl-4 leading-4 [&+&]:border-t [&+&]:border-[#f0f9fb]">
+      <span className="mr-4 inline-block h-3 w-3 animate-pulse cursor-progress bg-[#eee] text-transparent" />
       <span className="">
-        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+        <span className="inline-block animate-pulse cursor-progress bg-[#eee] text-transparent">
           Loading
         </span>{' '}
-        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+        <span className="inline-block animate-pulse cursor-progress bg-[#eee] text-transparent">
           cool
         </span>{' '}
-        <span className="bg-[#eee] text-transparent cursor-progress inline-block animate-pulse">
+        <span className="inline-block animate-pulse cursor-progress bg-[#eee] text-transparent">
           state
         </span>
       </span>
@@ -39,7 +39,7 @@ export const PureTaskList: React.FC<IProps> = ({
   );
   if (loading) {
     return (
-      <div className="relative bg-white min-h-[288px]">
+      <div className="relative min-h-[288px] bg-white">
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}
@@ -52,9 +52,9 @@ export const PureTaskList: React.FC<IProps> = ({
 
   if (tasks.length === 0) {
     return (
-      <div className="relative bg-white min-h-[288px]">
-        <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
-          <CheckIcon className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
+      <div className="relative min-h-[288px] bg-white">
+        <div className="absolute top-1/2 right-0 bottom-auto left-0 h-auto w-auto -translate-y-1/2 text-center">
+          <CheckIcon className="leading-14 mx-auto block w-12 stroke-[#2cc5d2]" />
           <div className="text-base font-extrabold text-slate-900">Oh no!</div>
           <div className="text-sm text-slate-600">Something went wrong</div>
         </div>
@@ -68,7 +68,7 @@ export const PureTaskList: React.FC<IProps> = ({
     ...tasks.filter((t) => t.state === ITaskState.TASK_ARCHIVED),
   ];
   return (
-    <div className="relative bg-white min-h-[288px]">
+    <div className="relative min-h-[288px] bg-white">
       {tasksInOrder.map((task) => (
         <Task key={task.id} task={task} {...events} />
       ))}

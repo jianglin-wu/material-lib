@@ -1,7 +1,3 @@
 {
-  "userIgnoreFilters": [
-    "node_modules/",
-    "build/",
-    "node_modules/"
-  ]
+  "userIgnoreFilters": ["node_modules/", "build/", "node_modules/"]
 }

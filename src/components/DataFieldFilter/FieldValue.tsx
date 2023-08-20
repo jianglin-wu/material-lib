@@ -20,8 +20,8 @@ const FieldValue: React.FC<IFieldValueProps> = ({
       const { mapping = [] } = metaData;
       let subData = metaData.default;
       if (operator) {
-        const currentMetadata = mapping?.find((item) =>
-          item?.operator?.includes(operator),
+        const currentMetadata = mapping?.find(
+          (item) => item?.operator?.includes(operator),
         );
         subData = currentMetadata?.value || metaData.default;
       }

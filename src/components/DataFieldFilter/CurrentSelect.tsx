@@ -42,7 +42,7 @@ const CurrentSelect: React.FC<IDataFieldFilterCurrent> = ({
 }) => {
   return (
     <div className={cls('flex flex-wrap space-x-2 space-x-reverse', className)}>
-      <span className="flex-grow-0 flex-shrink-0 text-base text-slate-600 leading-10 mr-0">
+      <span className="mr-0 flex-shrink-0 flex-grow-0 text-base leading-10 text-slate-600">
         当前筛选：
       </span>
       {data?.map(({ field, operator, value }, index) => {
@@ -73,7 +73,7 @@ const CurrentSelect: React.FC<IDataFieldFilterCurrent> = ({
         return (
           <span
             key={field}
-            className="text-blue-500 text-sm flex-shrink-0 py-2 px-2 rounded border border-blue-500 border-solid flex items-center last:!mr-0"
+            className="flex flex-shrink-0 items-center rounded border border-solid border-blue-500 py-2 px-2 text-sm text-blue-500 last:!mr-0"
           >
             <span
               className="cursor-pointer"
@@ -82,7 +82,7 @@ const CurrentSelect: React.FC<IDataFieldFilterCurrent> = ({
               {left} {operatorText} {valueArr.join(',')}
             </span>
             <CloseIcon
-              className="w-4 h-4 box-content cursor-pointer stroke-slate-500 hover:stroke-blue-500 p-1"
+              className="box-content h-4 w-4 cursor-pointer stroke-slate-500 p-1 hover:stroke-blue-500"
               strokeWidth={2}
               onClick={() => onRemove?.(index, field)}
             />

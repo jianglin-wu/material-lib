@@ -26,54 +26,28 @@ export const DataFieldFilterAdd: React.FC<IDataFieldFilterAddProps> = ({
 interface IDataFieldFilterProps {
   metaData: IDomainItem[];
   operatorMap: IOperatorMap;
-  valueFormatter: (key: string, value: unknown) => void;
+  valueFormatter?: (key: string, value: unknown) => void;
   initialValue: unknown[];
-  onSubmit: (dataFilters: unknown) => void;
+  onSubmit?: (dataFilters: unknown) => void;
 }
-export const DataFieldFilter: React.ForwardRefRenderFunction<
-  IModalInnerRef,
-  IDataFieldFilterProps
-> = (
-  { metaData, operatorMap, valueFormatter, initialValue, onSubmit },
-  ref,
-) => {
-  const [form] = Form.useForm();
-  const [customErrorInfo, setCustomErrorInfo] =
-    useState<CustomError | null>(null);
-
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        onReset: async () => {
-          await form.resetFields();
-          setCustomErrorInfo(null);
-        },
-        onOk: async () => {
-          try {
-            const { dataFilters } = await form.validateFields();
-            await createListValidator(metaData)(null, dataFilters);
-            setCustomErrorInfo(null);
-            const result = await onSubmit?.(dataFilters);
-            return result;
-          } catch (error) {
-            // 自定义的错误信息，需要手动将错误展示出来
-            if (error instanceof CustomError) {
-              setCustomErrorInfo(error);
-              return false;
-            }
-            // antd 错误会自动展示
-            if ((error as any).errorFields) {
-              return false;
-            }
-            throw error;
-          }
-        },
-      };
-    },
-    [form, setCustomErrorInfo, onSubmit, metaData],
-  );
-
+interface IDataFieldFilterPureProps {
+  metaData: IDomainItem[];
+  operatorMap: IOperatorMap;
+  valueFormatter?: (key: string, value: unknown) => void;
+  initialValue: unknown[];
+  form: any;
+  customErrorInfo: any;
+  setCustomErrorInfo: any;
+}
+export const DataFieldFilterPure: React.FC<IDataFieldFilterPureProps> = ({
+  metaData,
+  operatorMap,
+  valueFormatter,
+  initialValue,
+  form,
+  customErrorInfo,
+  setCustomErrorInfo,
+}) => {
   return (
     <Form name="dynamic_form_item" form={form}>
       <Row gutter={8} className="mb-1.5">
@@ -150,6 +124,64 @@ export const DataFieldFilter: React.ForwardRefRenderFunction<
         )}
       </Form.List>
     </Form>
+  );
+};
+
+export const DataFieldFilter: React.ForwardRefRenderFunction<
+  IModalInnerRef,
+  IDataFieldFilterProps
+> = (
+  { metaData, operatorMap, valueFormatter, initialValue, onSubmit },
+  ref,
+) => {
+  const [form] = Form.useForm();
+  const [customErrorInfo, setCustomErrorInfo] = useState<CustomError | null>(
+    null,
+  );
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        onReset: async () => {
+          await form.resetFields();
+          setCustomErrorInfo(null);
+        },
+        onOk: async () => {
+          try {
+            const { dataFilters } = await form.validateFields();
+            await createListValidator(metaData)(null, dataFilters);
+            setCustomErrorInfo(null);
+            const result = await onSubmit?.(dataFilters);
+            return result;
+          } catch (error) {
+            // 自定义的错误信息，需要手动将错误展示出来
+            if (error instanceof CustomError) {
+              setCustomErrorInfo(error);
+              return false;
+            }
+            // antd 错误会自动展示
+            if ((error as any).errorFields) {
+              return false;
+            }
+            throw error;
+          }
+        },
+      };
+    },
+    [form, setCustomErrorInfo, onSubmit, metaData],
+  );
+
+  return (
+    <DataFieldFilterPure
+      metaData={metaData}
+      operatorMap={operatorMap}
+      valueFormatter={valueFormatter}
+      initialValue={initialValue}
+      form={form}
+      customErrorInfo={customErrorInfo}
+      setCustomErrorInfo={setCustomErrorInfo}
+    />
   );
 };
 

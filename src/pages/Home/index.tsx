@@ -4,8 +4,8 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500 py-20 md:py-48">
-      <div className="backdrop-blur-sm bg-white/20 w-auto mx-6 md:w-[600px] md:mx-auto rounded-[20px] shadow-xl p-4 space-y-2">
+    <div className="min-h-screen w-full bg-gradient-to-tr from-sky-500 to-purple-500 py-20 md:py-48">
+      <div className="mx-6 w-auto space-y-2 rounded-[20px] bg-white/20 p-4 shadow-xl backdrop-blur-sm md:mx-auto md:w-[600px]">
         <Disclosure defaultOpen>
           {({ open }) => (
             <div>

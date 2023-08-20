@@ -2,5 +2,7 @@
   "files.associations": {
     "*.tailwind.css": "tailwindcss"
   },
-  "cSpell.words": ["headlessui", "heroicons"]
+  "cSpell.words": ["headlessui", "heroicons"],
+  "editor.formatOnSave": true,
+  "prettier.configPath": ".prettierrc.json"
 }

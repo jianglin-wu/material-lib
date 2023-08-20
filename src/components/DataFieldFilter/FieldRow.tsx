@@ -36,8 +36,8 @@ export const getValueLeafOptions = (
     const { mapping = [] } = valueMetaData;
     let subData = valueMetaData.default;
     if (operator) {
-      const currentMetadata = mapping?.find((item) =>
-        item?.operator?.includes(operator),
+      const currentMetadata = mapping?.find(
+        (item) => item?.operator?.includes(operator),
       );
       subData = currentMetadata?.value || valueMetaData.default;
     }
@@ -53,7 +53,7 @@ interface IFieldRowProps {
   canRemove?: boolean;
   onAddRow: () => void;
   onRemoveRow: () => void;
-  valueFormatter: (key: string, value: unknown) => void;
+  valueFormatter?: (key: string, value: unknown) => void;
   value?: IDomainValueRow;
   onChange?: (value: IDomainValueRow) => void;
 }

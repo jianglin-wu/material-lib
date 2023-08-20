@@ -43,12 +43,12 @@ export function PureInboxScreen({ error }: IPureProps) {
 
   if (error) {
     return (
-      <div className="w-full h-full bg-[#2cc5d2] ">
+      <div className="h-full w-full bg-[#2cc5d2] ">
         <Header items={items} />
         <div className="py-6 px-6 md:px-16">
           <div className="min-h-[calc(100vh-96px)] bg-white">
-            <div className="absolute top-1/2 right-0 bottom-auto left-0 w-auto h-auto text-center -translate-y-1/2">
-              <FaceFrownOutline className="w-12 leading-14 stroke-[#2cc5d2] block mx-auto" />
+            <div className="absolute top-1/2 right-0 bottom-auto left-0 h-auto w-auto -translate-y-1/2 text-center">
+              <FaceFrownOutline className="leading-14 mx-auto block w-12 stroke-[#2cc5d2]" />
               <div className="text-base font-extrabold text-slate-600">
                 {error || 'Oh no!'}
               </div>
@@ -61,13 +61,13 @@ export function PureInboxScreen({ error }: IPureProps) {
   }
 
   return (
-    <div className="w-full h-full bg-[#2cc5d2] ">
+    <div className="h-full w-full bg-[#2cc5d2] ">
       <Header items={items} />
       <div className="py-6 px-6 md:px-16">
         <div className="min-h-[calc(100vh-96px)] bg-white">
-          <nav className="text-left md:text-center px-6 py-5 bg-[#d3edf4]">
-            <h1 className="text-xl leading-5 cursor-pointer whitespace-nowrap">
-              <span className="overflow-hidden text-ellipsis whitespace-nowrap font-extrabold text-[#1c3f53] inline-block align-top max-w-full">
+          <nav className="bg-[#d3edf4] px-6 py-5 text-left md:text-center">
+            <h1 className="cursor-pointer whitespace-nowrap text-xl leading-5">
+              <span className="inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap align-top font-extrabold text-[#1c3f53]">
                 TaskBox
               </span>
             </h1>

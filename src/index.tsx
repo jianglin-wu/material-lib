@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import { BrowserRouter } from 'react-router-dom';
-import './index.tailwind.css';
+import 'tailwindcss/tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
