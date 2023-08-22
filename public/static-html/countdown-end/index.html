@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: '楷体', '楷体_GB2312', 標楷體, DFKai-sb, BiauKai;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(153, 0, 0);
+      }
+      .countdown {
+        margin-top: 100px;
+        font-size: 24px;
+      }
+    </style>
+    <title>Countdown</title>
+  </head>
+  <body>
+    <h2 id="title" style="color: white; text-align: center; font-size: 72px">
+      距 XXX 结束还有
+    </h2>
+    <div
+      class="countdown"
+      id="countdown"
+      style="
+        margin-top: 200px;
+        color: white;
+        text-align: center;
+        font-size: 96px;
+      "
+    ></div>
+    <h1
+      style="
+        text-align: center;
+        position: fixed;
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      "
+    >
+      <img src="./logo_1.png" alt="" />
+    </h1>
+    <script>
+      function updateCountdown() {
+        const now = new Date();
+        const targetDate = new Date('2023-08-23T21:00:00');
+        // const targetDate = new Date('2023-08-21T19:58:00');
+        const timeLeft = targetDate - now;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        let content = '';
+        if (days > 0) {
+          content += `<span style="color: #FFC000;">${days}</span>天 `;
+        }
+        if (days > 0 || hours > 0) {
+          content += `<span style="color: #FFC000;">${hours}</span>小时 `;
+        }
+        if (days > 0 || hours > 0 || minutes > 0) {
+          content += `<span style="color: #FFC000;">${minutes}</span>分 `;
+          content += `<span style="color: #FFC000;">${seconds}</span>秒`;
+        } else if (seconds > 0) {
+          content = `<span style="color: #FFC000;font-size: 200px;">${seconds}</span>秒`;
+        } else {
+          document.getElementById('title').innerHTML = 'HW2023 已结束';
+          // content = `<span style="color: #FFC000;">已结束</span>`;
+        }
+        document.getElementById('countdown').innerHTML = content;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
