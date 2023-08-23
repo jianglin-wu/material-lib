@@ -15,7 +15,7 @@ export default function Workspace() {
   return (
     <div className="min-h-screen bg-gradient-to-tr from-sky-500 to-purple-500">
       <Header items={items} />
-      <DrawingBoard className="work-area mx-6">
+      <DrawingBoard className="relative mx-6 h-[500px] select-none bg-slate-100">
         <EditWarp defaultPosition={{ left: 0, top: 0 }}>
           <div>hello</div>
         </EditWarp>

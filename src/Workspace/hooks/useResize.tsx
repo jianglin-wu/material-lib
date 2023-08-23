@@ -162,14 +162,38 @@ const useResize = ({ controlPosition, controlSize }: IControls) => {
 
   return (
     <Fragment>
-      <div ref={dotTopLeft} className="dot-box top-left" />
-      <div ref={dotTopMiddle} className="dot-box top-middle" />
-      <div ref={dotTopRight} className="dot-box top-right" />
-      <div ref={dotMiddleLeft} className="dot-box middle-left" />
-      <div ref={dotMiddleRight} className="dot-box middle-right" />
-      <div ref={dotBottomLeft} className="dot-box bottom-left" />
-      <div ref={dotBottomMiddle} className="dot-box bottom-middle" />
-      <div ref={dotBottomRight} className="dot-box bottom-right" />
+      <div
+        ref={dotTopLeft}
+        className="dot-box top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        ref={dotTopMiddle}
+        className="dot-box top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        ref={dotTopRight}
+        className="dot-box top-0 right-0 translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        ref={dotMiddleLeft}
+        className="dot-box top-1/2 left-0 -translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        ref={dotMiddleRight}
+        className="dot-box top-1/2 right-0 translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        ref={dotBottomLeft}
+        className="dot-box bottom-0 left-0 -translate-x-1/2 translate-y-1/2"
+      />
+      <div
+        ref={dotBottomMiddle}
+        className="dot-box bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+      />
+      <div
+        ref={dotBottomRight}
+        className="dot-box bottom-0 right-0 translate-x-1/2 translate-y-1/2"
+      />
     </Fragment>
   );
 };

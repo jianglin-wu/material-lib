@@ -31,12 +31,14 @@ const EditWarp = ({
   const childrenStyle = {
     width: size.width,
     height: size.height,
+    /* https://www.zhangxinxu.com/wordpress/2021/05/css-user-drag/ */
+    WebkitUserDrag: 'none',
   };
 
   return (
     <div
       ref={editContainer}
-      className="edit-container"
+      className="absolute cursor-pointer bg-white shadow-[rgba(0,0,0,0.2)_0_0_0_0.5px]"
       style={{
         width: `${size.width}px`,
         height: `${size.height}px`,

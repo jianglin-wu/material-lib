@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import 'tailwindcss/tailwind.css';
 import 'antd/dist/antd.css';
+import '../src/Workspace/index.css';
 
 const preview: Preview = {
   parameters: {
