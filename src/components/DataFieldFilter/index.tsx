@@ -31,11 +31,26 @@ interface IDataFieldFilterProps {
   onSubmit?: (dataFilters: unknown) => void;
 }
 interface IDataFieldFilterPureProps {
+  /**
+   * 源数据，指定字段类型、字段名、运算符、值类型。
+   */
   metaData: IDomainItem[];
+  /**
+   * 指定操作符与展示名称映射关系。
+   */
   operatorMap: IOperatorMap;
+  /**
+   * 值格式化转换函数。
+   */
   valueFormatter?: (key: string, value: unknown) => void;
+  /**
+   * 初始值
+   */
   initialValue: unknown[];
-  form: any;
+  /**
+   * 表单对象，可选
+   */
+  form?: any;
   customErrorInfo: any;
   setCustomErrorInfo: any;
 }
@@ -190,7 +205,7 @@ const DataFieldFilterWithModal = componentWithModal<
   IDataFieldFilterAddProps
 >(DataFieldFilter, DataFieldFilterAdd);
 
-const DEFAULT_OPERATOR_MAP: IOperatorMap = {
+export const DEFAULT_OPERATOR_MAP: IOperatorMap = {
   eq: '等于',
   neq: '不等于',
   gt: '大于',
